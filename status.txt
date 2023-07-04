@@ -1,0 +1,2 @@
+7/4/23
+    currently we have a system running that will extract the data from a single pdf page. The data is then sent to the organizeExtractedTextFromPDF file and uses regex expressions to turn that data into extracted tidbits that we can use to 
