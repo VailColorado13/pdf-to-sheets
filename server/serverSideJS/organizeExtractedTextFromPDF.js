@@ -16,8 +16,9 @@ async function organizeExtractedTextFromPDF (rawTextFromPDF) {
     headlineCopy = await organizeStringArrays(headlineCopy)
     linkDescriptionCopy = await organizeStringArrays(linkDescriptionCopy)
 
-    
+    //turn 1D arrays into 2D arrays for compatibility with data organization GSAPI is expecting
     headlineCopy = headlineCopy.map(string => [string])
+    linkDescriptionCopy = linkDescriptionCopy.map(string => [string])
 
     //create return object
     let returnObject = {}

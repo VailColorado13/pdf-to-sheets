@@ -1,2 +1,5 @@
-7/4/23
-    currently we have a system running that will extract the data from a single pdf page. The data is then sent to the organizeExtractedTextFromPDF file and uses regex expressions to turn that data into extracted tidbits that we can use to 
+Link to Dummy Spreadsheet: https://docs.google.com/spreadsheets/d/1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY/edit?pli=1#gid=170017883
+
+
+In the next 50 minutes I would like to accomplish the following: 
+    get merge the topPostCopy column appropriatly 

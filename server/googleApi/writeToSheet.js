@@ -8,9 +8,6 @@ const determineStartingRow = require('./determineStartingRow')
 
 
 async function writeToSheets(dataFromPdf) {
-    
-
-    console.log(dataFromPdf.headlineCopy);
 
     const startingRow = await determineStartingRow()
 
@@ -27,22 +24,67 @@ async function writeToSheets(dataFromPdf) {
             return
         }else {
             console.log('writeToSheet is connected to google sheet')
-            gsrun(client, startingRow)
+            writeToSheets(client, startingRow, dataFromPdf)
+            mergeCells(client, startingRow)
         }    
     })
 
-    async function gsrun(cl, startingRow) {
+
+
+    async function writeToSheets(client, startingRow) {
         const gsapi = google.sheets({version: 'v4', auth: client})
-        const options = {
+        const optionsWriteHeadlineCopy = {
             spreadsheetId: '1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY',
             range:`June '23 FB Segment Prospecting Carousels!J${startingRow}`,
             valueInputOption: 'USER_ENTERED',
             resource: {values: dataFromPdf.headlineCopy}
         }
+        const optionsWriteLinkDescription = {
+            spreadsheetId: '1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY',
+            range:`June '23 FB Segment Prospecting Carousels!K${startingRow}`,
+            valueInputOption: 'USER_ENTERED',
+            resource: {values: dataFromPdf.linkDescriptionCopy}
+        }
        
-       let response = await gsapi.spreadsheets.values.update(options)
-    //    console.log(response)
+       const writeHeadlineCopyResponse = await gsapi.spreadsheets.values.update(optionsWriteHeadlineCopy)
+       const writeLinkDescriptionResponse = await gsapi.spreadsheets.values.update(optionsWriteLinkDescription)
     }
+
+
+   async function mergeCells(client, startingRow) {
+    
+ 
+    const gsapi = google.sheets({version: 'v4', auth: client})
+    const request = {
+        spreadsheetId: '1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY', 
+        resource: {
+            requests: [
+                {
+                    mergeCells: {
+                        range: {
+                            sheetId: 170017883,
+                            startRowIndex: startingRow - 1,
+                            endRowIndex: startingRow - 1 + dataFromPdf.headlineCopy.length,
+                            startColumnIndex: 8,
+                            endColumnIndex: 9,
+                          },
+                        mergeType: 'MERGE_ALL'
+                    }
+                } 
+            ]        
+        }
+    }
+
+    try {
+        const mergeResponse = await gsapi.spreadsheets.batchUpdate(request);
+        console.log('Cells merged successfully!');
+      } catch (error) {
+        console.error('Error merging cells:', error);
+      }
+   }
+
+
+
 }
 
 
