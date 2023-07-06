@@ -52,28 +52,51 @@ async function writeToSheets(dataFromPdf) {
 
 
    async function mergeCells(client, startingRow) {
-    
- 
     const gsapi = google.sheets({version: 'v4', auth: client})
     const request = {
-        spreadsheetId: '1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY', 
+        spreadsheetId: '1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY',
         resource: {
-            requests: [
-                {
-                    mergeCells: {
-                        range: {
-                            sheetId: 170017883,
-                            startRowIndex: startingRow - 1,
-                            endRowIndex: startingRow - 1 + dataFromPdf.headlineCopy.length,
-                            startColumnIndex: 8,
-                            endColumnIndex: 9,
-                          },
-                        mergeType: 'MERGE_ALL'
-                    }
-                } 
-            ]        
-        }
-    }
+          requests: [
+            {
+              mergeCells: {
+                range: {
+                  sheetId: 170017883,
+                  startRowIndex: startingRow - 1,
+                  endRowIndex: startingRow - 1 + dataFromPdf.headlineCopy.length,
+                  startColumnIndex: 8,
+                  endColumnIndex: 9,
+                },
+                mergeType: 'MERGE_ALL',
+              },
+            },
+
+            {
+              updateCells: {
+                range: {
+                  sheetId: 170017883,
+                  startRowIndex: startingRow - 1,
+                  endRowIndex: startingRow,
+                  startColumnIndex: 8,
+                  endColumnIndex: 9,
+                },
+                rows: [
+                  {
+                    values: [
+                      {
+                        userEnteredValue: {
+                          stringValue: dataFromPdf.topPostCopy[0],
+                        },
+                      },
+                    ],
+                  },
+                ],
+                fields: 'userEnteredValue',
+              },
+            },
+
+          ],
+        },
+      }
 
     try {
         const mergeResponse = await gsapi.spreadsheets.batchUpdate(request);
