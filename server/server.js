@@ -13,10 +13,12 @@ app.get("/api" , (req, res) => {
 })
 
 app.post("/extract-text", async (req, res) => {
-    const rawTextFromPDF = await pdfParse(req.files.pdfFile)
+    console.log(req.body)
+    const rawTextFromPDF = await pdfParse(req.files.pdfFile, {min: 4, max: 4})
+    console.log(rawTextFromPDF)
     const organizedData = await organizeExtractedTextFromPDF(rawTextFromPDF.text)
-    determineStartingRow()
-    writeToSheets(organizedData)
+    // determineStartingRow()
+    // writeToSheets(organizedData)
 })
 
 
