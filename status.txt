@@ -1,5 +1,0 @@
-Link to Dummy Spreadsheet: https://docs.google.com/spreadsheets/d/1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY/edit?pli=1#gid=170017883
-
-
-In the next 50 minutes I would like to accomplish the following: 
-    get merge the topPostCopy column appropriatly 

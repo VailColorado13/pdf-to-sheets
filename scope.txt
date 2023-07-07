@@ -1,0 +1,32 @@
+Scope - Well-defined as to avoid scope-creep. 
+    This prototype will be completed when the following criteria are met: 
+        Frontend will offer a nice interface that will prompt them for the necessary data about their google sheet. For now, we will limit this to selecting between two different sheets within a googlesheets workbook - 
+
+        Front end will have options to select 
+            SmartTags / Labels, including desired starting UCID.
+            desired sheet from a workbook. For example "prospecting carousels" and "retargeting carousels". 
+        
+        Frontend will be polished and have a professional appearance.
+
+        The user will be able to drop in a multi-page pdf that includes some non-carousel pages (titles). This will work for carousels of varying length. 
+
+        At this time there will not be a way to grant permission for new spreasheet use, it will have to be the "dummy spreadsheet" 
+
+        prototype will ONLY work for Facebook carousels 
+
+        prototype will be hosted remotly on render or elsewhere, and will work in browser. 
+
+
+Time Estimate - my goal is to spend 10 Days getting the prototype to this level. That gives me until Thrusday 7/13/23 to have this prototype up an running. 
+
+Once the prototype is in a place where it works and can be demonstrated clearly, it will be time to pitch the idea first to Fred to get him on board, and then to Ryan and eventually David/Ro. 
+
+Why are we doing all this? 
+    I want to work full time 100% asynchronously building out this project my job for an alloted amount of time. I want to not have to do any producing other than the two CFS shoots. That way I can work remote from any time zone I want to. 
+
+
+
+
+
+Link to Dummy Spreadsheet: https://docs.google.com/spreadsheets/d/1h8e5rZN6c3nhpFnjVkDNTfhS5sd2vgnUco4FwnjeuOY/edit?pli=1#gid=170017883
+

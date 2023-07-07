@@ -29,8 +29,6 @@ async function writeToSheets(dataFromPdf) {
         }    
     })
 
-
-
     async function writeToSheets(client, startingRow) {
         const gsapi = google.sheets({version: 'v4', auth: client})
         const optionsWriteHeadlineCopy = {
@@ -58,6 +56,7 @@ async function writeToSheets(dataFromPdf) {
         resource: {
           requests: [
             {
+              //this request merges the 'top post copy' column accordingly 
               mergeCells: {
                 range: {
                   sheetId: 170017883,
@@ -69,7 +68,7 @@ async function writeToSheets(dataFromPdf) {
                 mergeType: 'MERGE_ALL',
               },
             },
-
+            //this request adds the value of the top post copy to the spreadsheet. 
             {
               updateCells: {
                 range: {
@@ -93,7 +92,6 @@ async function writeToSheets(dataFromPdf) {
                 fields: 'userEnteredValue',
               },
             },
-
           ],
         },
       }
@@ -105,9 +103,6 @@ async function writeToSheets(dataFromPdf) {
         console.error('Error merging cells:', error);
       }
    }
-
-
-
 }
 
 
